@@ -1,1 +1,74 @@
-<p>admin-dashboard works!</p>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Admin Dashboard</h2>
+
+    <div class="row">
+        <!-- Sección para agregar y listar productos -->
+        <div class="col-md-6">
+            <h4>Add / Update Product</h4>
+            <form (ngSubmit)="addProduct()" #productForm="ngForm">
+                <div class="form-group">
+                    <label for="productName">Name</label>
+                    <input type="text" id="productName" [(ngModel)]="newProduct.name" name="name" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="productDescription">Description</label>
+                    <textarea id="productDescription" [(ngModel)]="newProduct.description" name="description" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">Price</label>
+                    <input type="number" id="productPrice" [(ngModel)]="newProduct.price" name="price" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="productStock">Stock</label>
+                    <input type="number" id="productStock" [(ngModel)]="newProduct.stock" name="stock" required class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Add Product</button>
+            </form>
+
+            <h4 class="mt-4">Products List</h4>
+            <ul class="list-group">
+                <li *ngFor="let product of products" class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ product.name }} - ${{ product.price }}
+                    <div>
+                        <button (click)="updateProduct(product.id)" class="btn btn-warning btn-sm">Update</button>
+                        <button (click)="deleteProduct(product.id)" class="btn btn-danger btn-sm">Delete</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Sección para agregar y listar usuarios -->
+        <div class="col-md-6">
+            <h4>Add / Update User</h4>
+            <form (ngSubmit)="addUser()" #userForm="ngForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" [(ngModel)]="newUser.username" name="username" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" [(ngModel)]="newUser.email" name="email" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <select id="role" [(ngModel)]="newUser.role" name="role" required class="form-control">
+                        <option value="client">Client</option>
+                        <option value="operator">Operator</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Add User</button>
+            </form>
+
+            <h4 class="mt-4">Users List</h4>
+            <ul class="list-group">
+                <li *ngFor="let user of users" class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ user.username }} - {{ user.email }} ({{ user.role }})
+                    <div>
+                        <button (click)="updateUser(user.id)" class="btn btn-warning btn-sm">Update</button>
+                        <button (click)="deleteUser(user.id)" class="btn btn-danger btn-sm">Delete</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
