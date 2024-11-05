@@ -1,1 +1,27 @@
-<p>product works!</p>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Product List</h2>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Purchase Time</th>
+                <th>Client</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>${{ product.price }}</td>
+                <td>{{ product.purchaseTime | date:'short' }}</td>
+                <td>{{ product.client }}</td>
+                <td>
+                    <button (click)="processPayment(product.id)" class="btn btn-success">PAYED</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

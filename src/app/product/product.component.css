@@ -1,0 +1,39 @@
+.container {
+    margin-top: 50px;
+}
+
+.table {
+    border-radius: 10px;
+}
+
+.table th,
+.table td {
+    text-align: center; 
+}
+
+.table th {
+    background-color: #343a40; 
+    color: white; 
+}
+
+.btn-success {
+    background-color: #28a745; 
+}
+
+.btn-success:hover {
+    background-color: #218838; 
+}
+
+/* Mobile-first styles */
+@media (max-width: 576px) {
+    .table th,
+    .table td {
+        font-size: 14px; 
+        padding: .5rem; 
+    }
+
+    .btn-success {
+        width: 100%; 
+        margin-top: .5rem; 
+    }
+}
